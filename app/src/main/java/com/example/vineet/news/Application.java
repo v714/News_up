@@ -4,7 +4,7 @@ package com.example.vineet.news;
 public class Application {
     private String title ;
 //    private String description;
-//    private String link;
+private String link;
     private String date;
 
     public String getTitle() {
@@ -23,13 +23,15 @@ public class Application {
 //        this.description = description;
 //    }
 //
-//    public String getLink() {
-//        return link;
-//    }
-//
-//    public void setLink(String link) {
-//        this.link = link;
-//    }
+public String getLink() {
+
+
+    return link;
+}
+
+    public void setLink(String link) {
+        this.link = link;
+    }
     public String getDate() {
         return date;
     }
@@ -42,7 +44,7 @@ public class Application {
     public String toString() {
         return "" + getTitle() + "\n" +
              //   " Description: " + getDescription() +
-             //   "\n" + " link " + getLink() + "\n" +
+                "\n" + " link " + getLink() + "\n" +
                 "" + getDate();
     }
 }

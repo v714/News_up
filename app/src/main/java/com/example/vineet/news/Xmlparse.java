@@ -6,7 +6,6 @@ import android.util.Log;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 
@@ -47,6 +46,7 @@ public class Xmlparse {
                         break;
                     case XmlPullParser.TEXT:
                         TextValue = xpp.getText();
+
                         break;
                     case XmlPullParser.END_TAG:
                     //    Log.d("Xmlparse" , " Ending tag" +tagName);
@@ -61,9 +61,10 @@ public class Xmlparse {
 //                            else if (tagName.equalsIgnoreCase("description")) {
 //                                currentRecord.setDescription(TextValue);
 //                            }
-//                            else if (tagName.equalsIgnoreCase("link")) {
-//                                currentRecord.setLink(TextValue);
-//                            }
+                            else if (tagName.equalsIgnoreCase("link")) {
+                                currentRecord.setLink(TextValue);
+
+                            }
                             else if (tagName.equalsIgnoreCase("pubdate")) {
                                 currentRecord.setDate(TextValue);
                             }
@@ -84,9 +85,11 @@ public class Xmlparse {
             Log.d("Xmlparse","*********************************");
             Log.d("Xmlparse" , " Name: " + app.getTitle());
 //            Log.d("Xmlparse" , " Description: " + app.getDescription());
-//            Log.d("Xmlparse" , " Link: " + app.getLink());
+            Log.d("Xmlparse", " Link: " + app.getLink());
+
             Log.d("Xmlparse" , " Date: " + app.getDate());
         }
+
         return  true;
 
     }
