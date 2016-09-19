@@ -38,15 +38,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selected = ((TextView) view.findViewById(R.id.textview)).getText().toString();
-                String upp = selected.substring(selected.indexOf("http://"), selected.lastIndexOf(".html") + 5);
+                String upp = selected.substring(selected.indexOf("http://"), selected.lastIndexOf(".cms") + 4);
                 //     String upp =
                 //  Toast toast = Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_LONG);
                 //    toast.show();
                 //   selected.startsWith("http://");
                 Toast toa = Toast.makeText(getApplicationContext(), upp, Toast.LENGTH_LONG);
                 toa.show();
-
-
                 Intent i = new Intent(MainActivity.this, WebpageDisplay.class);
                 i.putExtra("URL", upp);
                 startActivity(i);
@@ -73,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         DownloadData downloadData = new DownloadData();
-        downloadData.execute(
+        downloadData.execute("http://economictimes.indiatimes.com/rssfeedstopstories.cms");
+        //  http://feeds.feedburner.com/ndtvnews-latest");
                 //"http://www.thehindu.com/news/?service=rss");
-                "http://zeenews.india.com/rss/india-national-news.xml");
+        //"http://zeenews.india.com/rss/india-national-news.xml");
     }
 
 

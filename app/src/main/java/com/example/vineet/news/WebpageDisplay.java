@@ -3,28 +3,21 @@ package com.example.vineet.news;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-/**
- * Created by Vineet on 7/29/2016.
- */
+
 public class WebpageDisplay extends Activity {
 
     private static final String TAG = "Main";
     private WebView webview;
     private ProgressDialog progressBar;
 
-    /**
-     * Called when the activity is first created.
-     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +28,13 @@ public class WebpageDisplay extends Activity {
 
         this.webview = (WebView) findViewById(R.id.webView);
 
-        WebSettings settings = webview.getSettings();
-        settings.setJavaScriptEnabled(true);
+        //   WebSettings settings = webview.getSettings();
+        //   settings.setJavaScriptEnabled(true);
         webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-        //  progressBar = ProgressDialog.show(WebpageDisplay.this, "WebView Example", "Loading...");
+        progressBar = ProgressDialog.show(WebpageDisplay.this, "WebView Example", "Loading...");
 
         webview.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -52,28 +45,27 @@ public class WebpageDisplay extends Activity {
 
             public void onPageFinished(WebView view, String url) {
                 Log.i(TAG, "Finished loading URL: " + url);
-//                if (progressBar.isShowing()) {
-//                    progressBar.dismiss();
-//                }
+                if (progressBar.isShowing()) {
+                    progressBar.dismiss();
+                }
             }
 
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Log.e(TAG, "Error: " + description);
-                Toast.makeText(getApplicationContext(), "Oh no! " + description, Toast.LENGTH_SHORT).show();
-                alertDialog.setTitle("Error");
-                alertDialog.setMessage(description);
-                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
-                alertDialog.show();
-            }
+//            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+//                Log.e(TAG, "Error: " + description);
+//                Toast.makeText(getApplicationContext(), "Oh no! " + description, Toast.LENGTH_SHORT).show();
+//                alertDialog.setTitle("Error");
+//                alertDialog.setMessage(description);
+//                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        return;
+//                    }
+//                });
+//                alertDialog.show();
+//            }
         });
         Uri uri = getIntent().getData();
         Uri url = Uri.parse(getIntent().getStringExtra("URL"));
-        //  String url = "http://" +txtView .getText().toString();
-        Toast.makeText(getBaseContext(), "UUUUUUURRRRLLL" + url, Toast.LENGTH_LONG).show();
+        //    Toast.makeText(getBaseContext(), "UUUUUUURRRRLLL" + url, Toast.LENGTH_LONG).show();
         webview.loadUrl(String.valueOf(url));
     }
 }

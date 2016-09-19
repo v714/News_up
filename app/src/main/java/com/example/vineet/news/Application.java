@@ -2,9 +2,9 @@ package com.example.vineet.news;
 
 
 public class Application {
-    private String title ;
-//    private String description;
-private String link;
+    private String title;
+    //    private String description;
+    private String link;
     private String date;
 
     public String getTitle() {
@@ -15,7 +15,7 @@ private String link;
         this.title = title;
     }
 
-//    public String getDescription() {
+    //    public String getDescription() {
 //        return description;
 //    }
 //
@@ -23,15 +23,16 @@ private String link;
 //        this.description = description;
 //    }
 //
-public String getLink() {
+    public String getLink() {
 
 
-    return link;
-}
+        return link;
+    }
 
     public void setLink(String link) {
         this.link = link;
     }
+
     public String getDate() {
         return date;
     }
@@ -43,7 +44,7 @@ public String getLink() {
     @Override
     public String toString() {
         return "" + getTitle() + "\n" +
-             //   " Description: " + getDescription() +
+                //   " Description: " + getDescription() +
                 "\n" + " link " + getLink() + "\n" +
                 "" + getDate();
     }

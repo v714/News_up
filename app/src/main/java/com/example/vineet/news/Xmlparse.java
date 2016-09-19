@@ -1,8 +1,6 @@
 package com.example.vineet.news;
 
 
-import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -28,6 +26,7 @@ public class Xmlparse {
         String TextValue="";
         Application currentRecord = null;
         boolean inEntry = false;
+        Application Link = null;
         try {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
@@ -42,6 +41,7 @@ public class Xmlparse {
                         if(tagName.equalsIgnoreCase("item")) {
                             inEntry=true;
                             currentRecord = new Application();
+                            Link = new Application();
                         }
                         break;
                     case XmlPullParser.TEXT:
@@ -81,14 +81,14 @@ public class Xmlparse {
         catch (Exception e ) {
             e.printStackTrace();
         }
-        for (Application app :applications){
-            Log.d("Xmlparse","*********************************");
-            Log.d("Xmlparse" , " Name: " + app.getTitle());
+//        for (Application app :applications){
+//            Log.d("Xmlparse","*********************************");
+//            Log.d("Xmlparse" , " Name: " + app.getTitle());
 //            Log.d("Xmlparse" , " Description: " + app.getDescription());
-            Log.d("Xmlparse", " Link: " + app.getLink());
-
-            Log.d("Xmlparse" , " Date: " + app.getDate());
-        }
+//            Log.d("Xmlparse", " Link: " + app.getLink());
+//
+//            Log.d("Xmlparse" , " Date: " + app.getDate());
+//        }
 
         return  true;
 
